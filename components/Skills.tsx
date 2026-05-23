@@ -65,7 +65,11 @@ const SkillCard: React.FC<SkillCardProps & { index: number; isFullWidth?: boolea
   </motion.div>
 );
 
-const Skills: React.FC = () => {
+interface SkillsProps {
+  onNavigate: (path: string) => void;
+}
+
+const Skills: React.FC<SkillsProps> = ({ onNavigate }) => {
   return (
     <section id="skills" className="py-24 relative z-10 overflow-hidden">
       {/* Background Image */}
@@ -101,6 +105,23 @@ const Skills: React.FC = () => {
             <SkillCard key={index} {...skill} index={index} isFullWidth={index === 2} />
           ))}
         </div>
+
+        {/* View Full Portfolio Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="flex justify-center mt-12"
+        >
+          <button
+            onClick={() => onNavigate('/portfolio')}
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-mcgreen hover:bg-mcgreen/80 text-black font-semibold font-sans rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:shadow-[0_0_25px_rgba(57,255,20,0.5)] transform hover:-translate-y-0.5 pointer-events-auto"
+          >
+            <span className="text-base font-bold">View Full Portfolio</span>
+            <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold">→</span>
+          </button>
+        </motion.div>
       </div>
     </section>
   );

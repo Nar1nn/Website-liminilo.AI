@@ -2,7 +2,11 @@ import React from 'react';
 import { Instagram, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const SocialProof: React.FC = () => {
+interface SocialProofProps {
+  onNavigate: (path: string) => void;
+}
+
+const SocialProof: React.FC<SocialProofProps> = ({ onNavigate }) => {
   return (
     <section id="social" className="py-24 relative z-10 border-t border-b border-white/5 bg-background overflow-hidden">
       {/* Background Image */}
@@ -54,7 +58,7 @@ const SocialProof: React.FC = () => {
                 <div className="w-8 h-8 bg-mcgreen grid grid-cols-8 grid-rows-8 border-2 border-green-900 shadow-[0_0_15px_rgba(57,255,20,0.5)]">
                    {/* Creeper-ish face dots */}
                    <div className="absolute inset-0 flex items-center justify-center font-block text-black text-[12px] opacity-20">X</div>
-                </div>
+                 </div>
               </span>
             </h2>
             
@@ -62,16 +66,26 @@ const SocialProof: React.FC = () => {
               Follow my daily exploration in AI, tech, and digital creativity.
             </p>
 
-            <a
-              href="https://instagram.com/liminilo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 text-white font-sans font-medium rounded-xl hover:opacity-90 transition-opacity"
-            >
-              <Instagram className="w-6 h-6" />
-              <span className="text-lg">@liminilo</span>
-              <ArrowUpRight className="w-5 h-5 ml-4" />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+              <button
+                onClick={() => onNavigate('/portfolio')}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-mcgreen hover:bg-mcgreen/80 text-black font-semibold font-sans rounded-xl transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.3)] transform hover:-translate-y-0.5 text-base cursor-pointer"
+              >
+                <span>View Portfolio</span>
+                <span className="font-bold">→</span>
+              </button>
+              
+              <a
+                href="https://instagram.com/liminilo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border-2 border-mcgreen text-mcgreen hover:bg-mcgreen/10 font-semibold font-sans rounded-xl transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.15)] transform hover:-translate-y-0.5 text-base"
+              >
+                <Instagram className="w-5 h-5 shrink-0" />
+                <span>Follow @liminilo</span>
+                <ArrowUpRight className="w-4 h-4 shrink-0" />
+              </a>
+            </div>
           </motion.div>
 
         </div>
