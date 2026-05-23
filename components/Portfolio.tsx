@@ -21,7 +21,7 @@ const projects: Project[] = [
     title: "Project 1",
     subtitle: "Sejarawan Universal",
     description: "Talk in real-time with all the historical figures in the world",
-    tags: ["Education", "Inclusive Access", "Hobby", "Vibe Coding"],
+    tags: ["Education", "Inclusive Access", "Voice-To-Voice interactive", "Hobby", "Vibe Coding"],
     image: porto1,
     link: "https://sejarawan-universal.vercel.app"
   },
@@ -38,8 +38,8 @@ const projects: Project[] = [
     id: 3,
     title: "Project 3",
     subtitle: "Kres Kopi",
-    description: "Talk in real-time with all the historical figures in the world",
-    tags: ["E-commerce", "Manufacturing", "Coffee", "Vibe Coding"],
+    description: "Next-gen e-commerce featuring an autonomous AI Barista Agent that helps customers consult",
+    tags: ["E-commerce", "Manufacturing", "AI Agent", "Coffee", "Vibe Coding"],
     image: porto3,
     link: "https://website-liminilo-ai.vercel.app"
   }
