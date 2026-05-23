@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, Cpu, Sparkles, Code, Terminal } from 'lucide-react';
 import porto1 from '../public-portofolio/porto1.png';
 import porto2 from '../public-portofolio/porto2.png';
+import porto3 from '../public-portofolio/porto3.png';
 
 interface Project {
   id: number;
@@ -36,11 +37,11 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Project 3",
-    subtitle: "LuminaRobotics Controller",
-    description: "A futuristic hardware controller mockup for robotic path planning, kinematic calculations, and telemetry graphing.",
-    tags: ["React", "Lucide Icons", "Robotics", "Modern CSS"],
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
-    link: "#"
+    subtitle: "Kres Kopi",
+    description: "Talk in real-time with all the historical figures in the world",
+    tags: ["E-commerce", "Manufacturing", "Coffee", "Vibe Coding"],
+    image: porto3,
+    link: "https://website-liminilo-ai.vercel.app"
   }
 ];
 
