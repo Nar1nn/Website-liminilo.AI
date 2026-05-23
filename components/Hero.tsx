@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -40,22 +39,9 @@ const Hero: React.FC = () => {
               Caesar A'zim Riyadi:
             </p>
             <p className="text-lg md:text-xl font-sans text-white">
-              We are the architects of the future.
+              17-year-old from Lampung. Learning from scratch, building with AI, heading to a Chinese robotics lab.
             </p>
           </div>
-
-          <motion.a
-            href="https://wa.me/6285758287612"
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="inline-flex items-center gap-3 bg-gradient-to-b from-green-500 to-green-600 border-2 border-[#1f4a1f] text-white font-sans font-medium px-6 py-3 rounded-lg shadow-[inset_0px_-3px_0px_rgba(0,0,0,0.3)] transition-all hover:-translate-y-1"
-          >
-            <MessageCircle className="w-6 h-6" />
-            <span className="text-lg">Chat on WhatsApp</span>
-          </motion.a>
         </motion.div>
       </div>
 

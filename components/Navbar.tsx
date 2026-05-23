@@ -37,28 +37,20 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-        scrolled ? 'py-4 glass bg-black/40 shadow-lg' : 'py-6 bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out navbar-container ${
+        scrolled ? 'py-4 navbar-glass bg-black/40 shadow-lg' : 'py-6 bg-transparent border-b border-transparent'
       } ${
         isVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-7xl">
         <a href="#home" className="flex items-center gap-3 group shrink-0">
-          <div className="w-10 h-10 bg-[#39ff14] grid grid-cols-8 grid-rows-8 border-2 border-white/20">
-            {/* Simple pixel face representation */}
-            <div className="col-span-8 row-span-8 bg-[#39ff14] flex justify-center items-center">
-              <div className="w-full h-full relative" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '25% 25%' }}>
-                 <div className="absolute inset-0 flex items-center justify-center font-block text-[10px] text-black">CA</div>
-              </div>
-            </div>
+          <div className="w-10 h-10 bg-transparent overflow-hidden flex items-center justify-center">
+            <img src="/main-profil.png" alt="Caesar" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl md:text-2xl font-block tracking-tighter leading-none text-white">
-              Caesar
-            </span>
-            <span className="text-xs md:text-sm font-block tracking-widest text-gray-400 leading-none mt-1">
-              A'ZIM RIYADI
+              Liminilo
             </span>
           </div>
         </a>
