@@ -1,4 +1,5 @@
 import { LucideIcon } from 'lucide-react';
+import { ReactNode } from 'react';
 
 export interface SkillCardProps {
   title: string;
@@ -9,4 +10,5 @@ export interface SkillCardProps {
 export interface NavItem {
   label: string;
   href: string;
+  icon?: ReactNode;
 }
