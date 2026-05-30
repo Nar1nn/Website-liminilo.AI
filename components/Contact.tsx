@@ -47,6 +47,16 @@ const Contact: React.FC = () => {
     }, 5000);
   };
 
+  const handleCollaborate = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Check if user is on a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (!isMobile) {
+      e.preventDefault();
+      // Directly open Gmail web compose page for desktop users with pre-filled recipient and subject
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=liminilo23@gmail.com&su=Collaboration%20Inquiry', '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <section id="contact" className="py-24 bg-background relative z-10 px-6 overflow-hidden">
       {/* Background Image */}
@@ -207,7 +217,10 @@ const Contact: React.FC = () => {
 
             {/* Email Contact Portal */}
             <motion.a 
-              href="mailto:contact@liminilo.ai"
+              href="mailto:liminilo23@gmail.com?subject=Collaboration%20Inquiry"
+              onClick={handleCollaborate}
+              target="_blank"
+              rel="noopener noreferrer"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -223,7 +236,7 @@ const Contact: React.FC = () => {
                   Open for new project commissions and creative partnerships.
                 </p>
                 <span className="text-xs text-green-400/80 font-mono tracking-wider border border-green-500/20 px-2.5 py-1 rounded bg-green-500/5 mt-1">
-                  contact@liminilo.ai
+                  liminilo23@gmail.com
                 </span>
               </div>
             </motion.a>

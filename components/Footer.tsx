@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           </div>
           <div className="flex flex-col">
             <h3 className="text-mcgreen font-sans font-semibold text-lg">Caesar A'zim Riyadi</h3>
-            <p className="text-gray-400 font-sans text-sm">AI Builder · On the way to humanoid robotics</p>
+            <p className="text-gray-400 font-sans text-sm">AI Power User · On the way to humanoid robotics</p>
             <p className="text-gray-500 font-sans text-sm">We are the architects of the future.</p>
           </div>
         </div>

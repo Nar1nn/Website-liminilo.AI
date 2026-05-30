@@ -45,12 +45,6 @@ const Hero: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Minecraft-like floating particles/pixels (optional decoration) */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-[20%] left-[10%] w-4 h-4 bg-mcgreen/20 animate-pulse border border-mcgreen"></div>
-        <div className="absolute top-[40%] right-[20%] w-6 h-6 bg-blue-500/20 animate-pulse border border-blue-500/20"></div>
-        <div className="absolute bottom-[30%] left-[30%] w-3 h-3 bg-purple-500/20 animate-pulse border border-purple-500/20"></div>
-      </div>
     </section>
   );
 };
