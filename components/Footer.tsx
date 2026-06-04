@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-6 max-w-5xl flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
         <div className="flex items-center gap-4">
           <div className="w-16 h-16 bg-transparent overflow-hidden shrink-0 flex items-center justify-center">
-            <img src="/main-profil.png" alt="Profile" className="w-full h-full object-cover" />
+            <img src="/main-profil.png" alt="Profile" className="w-full h-full object-cover crisp-image" />
           </div>
           <div className="flex flex-col">
             <h3 className="text-mcgreen font-sans font-semibold text-lg">Caesar A'zim Riyadi</h3>

@@ -7,6 +7,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingAction from './components/FloatingAction';
 import Portfolio from './components/Portfolio';
+import Activity from './components/Activity';
+import Humanoid from './components/Humanoid';
 
 function App() {
   const [currentPath, setCurrentPath] = useState(() => {
@@ -14,6 +16,12 @@ function App() {
     const h = window.location.hash;
     if (p === '/portfolio' || h === '#/portfolio' || h === '#portfolio') {
       return '/portfolio';
+    }
+    if (p === '/activity' || h === '#/activity' || h === '#activity') {
+      return '/activity';
+    }
+    if (p === '/humanoid' || h === '#/humanoid' || h === '#humanoid') {
+      return '/humanoid';
     }
     return '/';
   });
@@ -24,6 +32,10 @@ function App() {
       const h = window.location.hash;
       if (p === '/portfolio' || h === '#/portfolio' || h === '#portfolio') {
         setCurrentPath('/portfolio');
+      } else if (p === '/activity' || h === '#/activity' || h === '#activity') {
+        setCurrentPath('/activity');
+      } else if (p === '/humanoid' || h === '#/humanoid' || h === '#humanoid') {
+        setCurrentPath('/humanoid');
       } else {
         setCurrentPath('/');
       }
@@ -49,20 +61,31 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
+  const renderContent = () => {
+    switch (currentPath) {
+      case '/portfolio':
+        return <Portfolio onNavigate={navigateTo} />;
+      case '/activity':
+        return <Activity onNavigate={navigateTo} />;
+      case '/humanoid':
+        return <Humanoid onNavigate={navigateTo} />;
+      default:
+        return (
+          <main>
+            <Hero />
+            <Skills onNavigate={navigateTo} />
+            <SocialProof onNavigate={navigateTo} />
+            <Contact />
+          </main>
+        );
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-white font-sans selection:bg-mcgreen/30">
       <Navbar currentPath={currentPath} onNavigate={navigateTo} />
       
-      {currentPath === '/portfolio' ? (
-        <Portfolio onNavigate={navigateTo} />
-      ) : (
-        <main>
-          <Hero />
-          <Skills onNavigate={navigateTo} />
-          <SocialProof onNavigate={navigateTo} />
-          <Contact />
-        </main>
-      )}
+      {renderContent()}
       
       <Footer />
       <FloatingAction />

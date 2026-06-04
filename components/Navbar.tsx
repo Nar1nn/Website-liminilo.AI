@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Home, Pickaxe, Briefcase, Mail } from 'lucide-react';
+import { Menu, X, Home, Briefcase, Users, Bot } from 'lucide-react';
 import { NavItem } from '../types';
 
 const navItems: NavItem[] = [
-  { label: 'Home', href: '/#home', icon: <Home className="w-4 h-4" /> },
-  { label: 'Skills', href: '/#skills', icon: <Pickaxe className="w-4 h-4" /> },
+  { label: 'Home', href: '/', icon: <Home className="w-4 h-4" /> },
   { label: 'Portfolio', href: '/portfolio', icon: <Briefcase className="w-4 h-4" /> },
-  { label: 'Contact', href: '/#contact', icon: <Mail className="w-4 h-4" /> },
+  { label: 'Activity', href: '/activity', icon: <Users className="w-4 h-4" /> },
+  { label: 'Humanoid', href: '/humanoid', icon: <Bot className="w-4 h-4" /> },
 ];
 
 interface NavbarProps {
@@ -50,19 +50,15 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center max-w-7xl">
         <a 
-          href="/#home" 
+          href="/" 
           onClick={(e) => {
             e.preventDefault();
             onNavigate('/');
-            setTimeout(() => {
-              const el = document.getElementById('home');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
           }}
           className="flex items-center gap-3 group shrink-0"
         >
           <div className="w-10 h-10 bg-transparent overflow-hidden flex items-center justify-center">
-            <img src="/main-profil.png" alt="Caesar" className="w-full h-full object-cover" />
+            <img src="/main-profil.png" alt="Caesar" className="w-full h-full object-cover crisp-image" />
           </div>
           <div className="flex flex-col">
             <span className="text-xl md:text-2xl font-block tracking-tighter leading-none text-white">
@@ -73,31 +69,15 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-2 glass px-4 py-2 rounded-xl">
-          {navItems.map((item, index) => {
-            const isItemActive = (item.href === '/portfolio' && currentPath === '/portfolio') || 
-                               (item.href !== '/portfolio' && currentPath !== '/portfolio' && index === 0);
+          {navItems.map((item) => {
+            const isItemActive = currentPath === item.href;
             return (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={(e) => {
-                  if (item.href === '/portfolio') {
-                    e.preventDefault();
-                    onNavigate('/portfolio');
-                  } else if (currentPath === '/portfolio') {
-                    e.preventDefault();
-                    onNavigate('/');
-                    const sectionId = item.href.replace('/#', '');
-                    setTimeout(() => {
-                      const el = document.getElementById(sectionId);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  } else {
-                    e.preventDefault();
-                    const sectionId = item.href.replace('/#', '');
-                    const el = document.getElementById(sectionId);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
+                  e.preventDefault();
+                  onNavigate(item.href);
                 }}
                 className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all text-sm font-sans ${
                   isItemActive 
@@ -129,36 +109,30 @@ const Navbar: React.FC<NavbarProps> = ({ currentPath, onNavigate }) => {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 w-full glass border-t border-gray-800">
           <div className="flex flex-col p-6 gap-2">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="flex items-center gap-3 text-gray-300 hover:text-white hover:bg-white/10 p-4 rounded-lg text-lg font-sans"
-                onClick={(e) => {
-                  setIsOpen(false);
-                  if (item.href === '/portfolio') {
+            {navItems.map((item) => {
+              const isItemActive = currentPath === item.href;
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className={`flex items-center gap-3 p-4 rounded-lg text-lg font-sans transition-all ${
+                    isItemActive
+                    ? 'bg-white/10 text-white border border-mcgreen/30 shadow-[inset_0_0_10px_rgba(57,255,20,0.15)] font-semibold'
+                    : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  }`}
+                  onClick={(e) => {
+                    setIsOpen(false);
                     e.preventDefault();
-                    onNavigate('/portfolio');
-                  } else if (currentPath === '/portfolio') {
-                    e.preventDefault();
-                    onNavigate('/');
-                    const sectionId = item.href.replace('/#', '');
-                    setTimeout(() => {
-                      const el = document.getElementById(sectionId);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }, 100);
-                  } else {
-                    e.preventDefault();
-                    const sectionId = item.href.replace('/#', '');
-                    const el = document.getElementById(sectionId);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-              >
-                <span className="text-mcgreen">{item.icon}</span>
-                {item.label}
-              </a>
-            ))}
+                    onNavigate(item.href);
+                  }}
+                >
+                  <span className={isItemActive ? "text-mcgreen drop-shadow-[0_0_5px_rgba(57,255,20,0.8)]" : "text-white/50"}>
+                    {item.icon}
+                  </span>
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
         </div>
       )}

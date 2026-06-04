@@ -34,7 +34,7 @@ const SocialProof: React.FC<SocialProofProps> = ({ onNavigate }) => {
                  <img 
                    src="/page3-profil.png" 
                    alt="Caesar A'zim Riyadi Profile" 
-                   className="w-full h-auto aspect-square object-cover rounded-xl"
+                   className="w-full h-auto aspect-square object-cover rounded-xl crisp-image"
                  />
               </div>
             </div>
@@ -48,7 +48,7 @@ const SocialProof: React.FC<SocialProofProps> = ({ onNavigate }) => {
             className="w-full md:w-1/2 flex flex-col items-start"
           >
             <p className="text-mcgreen font-sans font-medium mb-2 tracking-widest uppercase text-sm">
-              Follow My Journey
+              EXPLORE MY WORK
             </p>
             
             <h2 className="text-4xl md:text-5xl font-sans font-bold text-white mb-4 leading-tight">
@@ -63,7 +63,7 @@ const SocialProof: React.FC<SocialProofProps> = ({ onNavigate }) => {
             </h2>
             
             <p className="text-gray-300 font-sans text-lg mb-8 max-w-md">
-              Follow my daily exploration in AI, tech, and digital creativity.
+              Click below to see how I turn digital creativity into structured solutions.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">

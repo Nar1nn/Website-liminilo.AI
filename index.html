@@ -54,6 +54,14 @@
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255,255,255,0.05);
       }
+      .crisp-image {
+        image-rendering: auto;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        will-change: transform;
+      }
       .text-glow-green {
         text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
       }
@@ -66,6 +74,21 @@
       }
       .clip-chamfer-inner {
         clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px);
+      }
+
+      /* Infinite marquee runner styling */
+      @keyframes marquee-glide {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+      }
+      .animate-marquee-glide {
+        display: flex;
+        width: max-content;
+        animation: marquee-glide 40s linear infinite;
+        will-change: transform;
+      }
+      .animate-marquee-glide:hover {
+        animation-play-state: paused;
       }
 
       /* Custom scrollbar for that blocky feel */

@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Cpu, Sparkles, Code, Terminal } from 'lucide-r
 import porto1 from '../public-portofolio/porto1.png';
 import porto2 from '../public-portofolio/porto2.png';
 import porto3 from '../public-portofolio/porto3.png';
+import porto4 from '../public-portofolio/porto4.png';
 
 interface Project {
   id: number;
@@ -21,7 +22,7 @@ const projects: Project[] = [
     title: "Project 1",
     subtitle: "Sejarawan Universal",
     description: "Talk in real-time with all the historical figures in the world",
-    tags: ["Education", "Inclusive Access", "Voice-To-Voice interactive", "Hobby", "Vibe Coding"],
+    tags: ["Education", "Inclusive Access", "Voice-To-Voice interactive", "Hobby"],
     image: porto1,
     link: "https://sejarawan-universal.vercel.app"
   },
@@ -30,7 +31,7 @@ const projects: Project[] = [
     title: "Project 2",
     subtitle: "Interactive SpinWheel link",
     description: "Professional branding to put all important portfolio links or to promote sales",
-    tags: ["Branding", "Interactive", "Marketing", "Vibe Coding"],
+    tags: ["Branding", "Interactive", "Marketing"],
     image: porto2,
     link: "https://need-anything.vercel.app"
   },
@@ -39,9 +40,18 @@ const projects: Project[] = [
     title: "Project 3",
     subtitle: "Kres Kopi",
     description: "Next-gen e-commerce featuring an autonomous AI Barista Agent that helps customers consult",
-    tags: ["E-commerce", "Manufacturing", "AI Agent", "Coffee", "Vibe Coding"],
+    tags: ["E-commerce", "Manufacturing", "AI Agent", "Coffee"],
     image: porto3,
     link: "https://website-liminilo-ai.vercel.app"
+  },
+  {
+    id: 4,
+    title: "Project 4",
+    subtitle: "LimBooth",
+    description: "An exclusive digital photobooth web app that brings the nostalgic physical booth experience into a seamless, user-friendly online platform.",
+    tags: ["Digital Photobooth", "Web Development", "Innovation", "UI/UX Design", "Fun"],
+    image: porto4,
+    link: "https://limbooth.vercel.app"
   }
 ];
 
@@ -103,70 +113,101 @@ const Portfolio: React.FC<PortfolioProps> = ({ onNavigate }) => {
           <div className="w-24 h-1 bg-mcgreen mx-auto mt-6 box-shadow-glow-green"></div>
         </div>
 
-        {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-              className="group relative p-[1px] bg-white/10 hover:bg-mcgreen/30 clip-chamfer transition-all duration-300 hover:shadow-[0_0_30px_rgba(57,255,20,0.15)]"
-            >
-              <div className="h-full bg-black/90 clip-chamfer-inner p-6 flex flex-col justify-between">
-                
-                {/* Visual Thumbnail Frame */}
-                <div>
-                  <div className="relative overflow-hidden rounded-lg aspect-[4/3] bg-zinc-900 border border-white/5 mb-6 group-hover:border-mcgreen/30 transition-colors">
-                    <img
-                      src={project.image}
-                      alt={project.subtitle}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-80 group-hover:opacity-100"
-                    />
-                    <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-3 py-1 border border-white/10 rounded-md">
-                      <span className="text-mcgreen text-xs font-mono font-bold tracking-widest">{project.title}</span>
-                    </div>
-                  </div>
+        {/* Portfolio Sections grouped by Category */}
+        <div className="space-y-16">
+          {[
+            { name: "E-Commerce", projectIds: [3] },
+            { name: "Personal User", projectIds: [2] },
+            { name: "Education", projectIds: [1] },
+            { name: "Entertainment", projectIds: [4] }
+          ].map((cat, catIndex) => {
+            const catProjects = projects.filter(p => cat.projectIds.includes(p.id));
+            if (catProjects.length === 0) return null;
 
-                  {/* Descriptions */}
-                  <div className="mb-6">
-                    <h3 className="text-xl font-bold font-sans text-white mb-2 tracking-tight group-hover:text-mcgreen transition-colors">
-                      {project.subtitle}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed font-sans">
-                      {project.description}
-                    </p>
-                  </div>
+            return (
+              <div key={cat.name} className="space-y-6">
+                {/* Category Header */}
+                <div className="flex items-center gap-3 border-b border-white/5 pb-3">
+                  <span className="w-2 h-2 bg-mcgreen rounded-sm animate-pulse"></span>
+                  <h2 className="text-xl md:text-2xl font-block uppercase tracking-wider text-white">
+                    {cat.name}
+                  </h2>
+                  <div className="h-[1px] flex-1 bg-gradient-to-r from-white/10 to-transparent ml-4" />
+                  <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    {catProjects.length} {catProjects.length === 1 ? 'Project' : 'Projects'}
+                  </span>
                 </div>
 
-                {/* Bottom Stats & Anchor */}
-                <div>
-                  {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {project.tags.map(tag => (
-                      <span 
-                        key={tag} 
-                        className="text-[10px] uppercase font-mono tracking-wider bg-white/5 text-gray-300 px-2.5 py-0.5 rounded border border-white/5 group-hover:border-mcgreen/10"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                {/* Grid layout (1 row under categories, responsive max 3 columns) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                  {catProjects.map((project, index) => (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: (catIndex * 0.1) + (index * 0.1) }}
+                      className="group relative p-[1px] bg-white/10 hover:bg-mcgreen/30 clip-chamfer transition-all duration-300 hover:shadow-[0_0_30px_rgba(57,255,20,0.15)]"
+                    >
+                      <div className="h-full bg-black/90 clip-chamfer-inner p-5 pb-6 flex flex-col justify-between">
+                        
+                        {/* Visual Thumbnail Frame */}
+                        <div>
+                          <div className="relative overflow-hidden rounded-lg aspect-[1.5/1] bg-zinc-900 border border-white/5 mb-4 group-hover:border-mcgreen/30 transition-colors">
+                            <img
+                              src={project.image}
+                              alt={project.subtitle}
+                              referrerPolicy="no-referrer"
+                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 opacity-80 group-hover:opacity-100 crisp-image"
+                            />
+                            <div className="absolute top-3 left-3 bg-black/75 backdrop-blur-md px-3 py-1 border border-white/10 rounded-md">
+                              <span className="text-mcgreen text-xs font-mono font-bold tracking-widest">{project.title}</span>
+                            </div>
+                          </div>
 
-                  {/* View Project Button */}
-                  <a
-                    href={project.link}
-                    className="w-full py-3 bg-white/5 border border-white/10 hover:border-mcgreen hover:bg-mcgreen hover:text-black hover:font-semibold font-sans rounded transition-all duration-300 flex items-center justify-center gap-2 text-sm text-gray-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.3)]"
-                  >
-                    <span>View Project</span>
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
+                          {/* Descriptions */}
+                          <div className="mb-6">
+                            <h3 className="text-lg font-bold font-sans text-white mb-2 tracking-tight group-hover:text-mcgreen transition-colors">
+                              {project.subtitle}
+                            </h3>
+                            <p className="text-gray-400 text-sm leading-relaxed font-sans">
+                              {project.description}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Bottom Stats & Anchor */}
+                        <div>
+                          {/* Tech Tags */}
+                          <div className="flex flex-wrap gap-1.5 mb-6">
+                            {project.tags.map(tag => (
+                              <span 
+                                key={tag} 
+                                className="text-[10px] uppercase font-mono tracking-wider bg-white/5 text-gray-300 px-2.5 py-0.5 rounded border border-white/5 group-hover:border-mcgreen/10"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* View Project Button */}
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="w-full py-3 bg-white/5 border border-white/10 hover:border-mcgreen hover:bg-mcgreen hover:text-black hover:font-semibold font-sans rounded transition-all duration-300 flex items-center justify-center gap-2 text-sm text-gray-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.3)]"
+                          >
+                            <span>View Project</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
+
+                      </div>
+                    </motion.div>
+                  ))}
                 </div>
-
               </div>
-            </motion.div>
-          ))}
+            );
+          })}
         </div>
 
       </div>
