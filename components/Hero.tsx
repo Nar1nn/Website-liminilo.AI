@@ -25,21 +25,22 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="max-w-3xl"
         >
-          <h2 className="text-xl md:text-3xl font-sans text-gray-200 mb-2 font-medium">
-            The Future engineer
-          </h2>
+          <span className="text-[15px] font-sans text-gray-400 uppercase tracking-[0.25em] mb-4 block font-medium">
+            Building Things, Learning Everything
+          </span>
           
-          <h1 className="text-6xl md:text-[100px] font-block leading-none mb-6">
-            <span className="text-white block mb-2">Robot</span>
-            <span className="text-mcgreen block text-glow-green">Humanoid</span>
+          <h1 className="text-4xl sm:text-6xl md:text-[75px] md:leading-[72px] font-block leading-[72px] mb-8 tracking-tight">
+            <span className="text-white">Caesar</span>
+            <span className="text-mcgreen text-glow-green">AR</span>
           </h1>
 
-          <div className="border-l-4 border-mcgreen pl-4 mb-8">
-            <p className="text-xl md:text-2xl font-sans text-mcgreen mb-2">
-              Caesar A'zim Riyadi:
+          <div className="border-l-2 sm:border-l-4 border-mcgreen pl-4 sm:pl-6 space-y-3 mb-8">
+            <p className="text-[19px] leading-[30px] font-sans text-mcgreen font-medium tracking-wide">
+              Exploring AI, products, and robotics from scratch.
             </p>
-            <p className="text-lg md:text-xl font-sans text-white">
-              17-year-old from Lampung. Learning from scratch, building with AI, heading to a Chinese robotics lab.
+            <p className="text-[20px] leading-[24px] font-sans text-gray-300">
+              Turning curiosity into projects, one experiment at a time. <br />
+              Building skills today for the things I dream of tomorrow.
             </p>
           </div>
         </motion.div>

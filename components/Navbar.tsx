@@ -4,7 +4,7 @@ import { NavItem } from '../types';
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/', icon: <Home className="w-4 h-4" /> },
-  { label: 'Portfolio', href: '/portfolio', icon: <Briefcase className="w-4 h-4" /> },
+  { label: 'Projects', href: '/portfolio', icon: <Briefcase className="w-4 h-4" /> },
   { label: 'Activity', href: '/activity', icon: <Users className="w-4 h-4" /> },
   { label: 'Humanoid', href: '/humanoid', icon: <Bot className="w-4 h-4" /> },
 ];

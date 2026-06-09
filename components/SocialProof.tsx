@@ -71,7 +71,7 @@ const SocialProof: React.FC<SocialProofProps> = ({ onNavigate }) => {
                 onClick={() => onNavigate('/portfolio')}
                 className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-mcgreen hover:bg-mcgreen/80 text-black font-semibold font-sans rounded-xl transition-all duration-300 hover:shadow-[0_0_15px_rgba(57,255,20,0.3)] transform hover:-translate-y-0.5 text-base cursor-pointer"
               >
-                <span>View Portfolio</span>
+                <span>Explore My Projects</span>
                 <span className="font-bold">→</span>
               </button>
               

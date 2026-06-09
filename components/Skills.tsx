@@ -1,5 +1,5 @@
 import React from 'react';
-import { Monitor, Camera, Sparkles } from 'lucide-react';
+import { Monitor, Zap, Image, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Defined locally since we added extra color properties
@@ -14,24 +14,32 @@ type SkillCardProps = {
 
 const skills: SkillCardProps[] = [
   {
-    title: "AI Software Engineer",
-    description: "Creating Website and APPS with AI.",
+    title: "Websites & Landing Pages",
+    description: "Building personal brands, portfolios, and simple business websites with modern AI-powered workflows.",
     icon: Monitor,
     glowColor: "group-hover:shadow-[0_0_20px_rgba(57,255,20,0.3)]",
     borderColor: "border-green-500/50",
     bgHex: "text-[#39ff14]"
   },
   {
-    title: "AI Visual Arts",
-    description: "High-fidelity image and video generation in any artistic style.",
-    icon: Camera,
+    title: "Rapid Prototyping",
+    description: "Turning ideas into functional websites and product prototypes quickly using AI.",
+    icon: Zap,
     glowColor: "group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]",
     borderColor: "border-blue-500/50",
     bgHex: "text-blue-400"
   },
   {
-    title: "Loading new skills",
-    description: "Currently learning more cutting-edge AI technologies and robotic integrations before expanding this portfolio.",
+    title: "Thumbnail Design",
+    description: "Designing scroll-stopping thumbnails for Instagram, TikTok, and YouTube.",
+    icon: Image,
+    glowColor: "group-hover:shadow-[0_0_20px_rgba(168,85,247,0.3)]",
+    borderColor: "border-purple-500/50",
+    bgHex: "text-purple-400"
+  },
+  {
+    title: "Always Learning",
+    description: "Exploring AI, robotics, automation, and emerging technologies while continuously expanding my skill set.",
     icon: Sparkles,
     glowColor: "group-hover:shadow-[0_0_20px_rgba(250,204,21,0.2)]",
     borderColor: "border-yellow-500/30 border-dashed",
@@ -51,7 +59,7 @@ const SkillCard: React.FC<SkillCardProps & { index: number; isFullWidth?: boolea
       <div className="flex items-center gap-6">
         <div className={`relative w-16 h-16 flex items-center justify-center shrink-0`}>
           {/* Faux shadow/glow base matching the mock style */}
-          <div className="absolute inset-0 bg-current opacity-20 blur-xl" style={{ color: bgHex.includes('#39ff14') ? '#39ff14' : bgHex.includes('blue-400') ? '#60a5fa' : bgHex.includes('yellow-400') ? '#facc15' : '#a1a1aa' }}></div>
+          <div className="absolute inset-0 bg-current opacity-20 blur-xl" style={{ color: bgHex.includes('#39ff14') ? '#39ff14' : bgHex.includes('blue-400') ? '#60a5fa' : bgHex.includes('purple-400') ? '#c084fc' : bgHex.includes('yellow-400') ? '#facc15' : '#a1a1aa' }}></div>
           <Icon className={`w-12 h-12 relative z-10 ${bgHex} drop-shadow-lg`} />
         </div>
         <h3 className={`text-xl md:text-2xl font-sans font-medium ${bgHex}`}>
@@ -92,7 +100,7 @@ const Skills: React.FC<SkillsProps> = ({ onNavigate }) => {
           >
             <span className="text-mcgreen opacity-50 shrink-0">⚔️</span>
             <h2 className="text-3xl md:text-5xl font-block uppercase tracking-wider text-white">
-              MY SKILLS & EXPERIENCE
+              WORK WITH ME
             </h2>
             <span className="text-mcgreen opacity-50 shrink-0">⚔️</span>
           </motion.div>
@@ -102,7 +110,7 @@ const Skills: React.FC<SkillsProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {skills.map((skill, index) => (
-            <SkillCard key={index} {...skill} index={index} isFullWidth={index === 2} />
+            <SkillCard key={index} {...skill} index={index} />
           ))}
         </div>
 
@@ -118,7 +126,7 @@ const Skills: React.FC<SkillsProps> = ({ onNavigate }) => {
             onClick={() => onNavigate('/portfolio')}
             className="group inline-flex items-center gap-3 px-8 py-4 bg-mcgreen hover:bg-mcgreen/80 text-black font-semibold font-sans rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(57,255,20,0.3)] hover:shadow-[0_0_25px_rgba(57,255,20,0.5)] transform hover:-translate-y-0.5 pointer-events-auto"
           >
-            <span className="text-base font-bold">View Full Portfolio</span>
+            <span className="text-base font-bold">Explore My Projects</span>
             <span className="group-hover:translate-x-1.5 transition-transform duration-300 font-bold">→</span>
           </button>
         </motion.div>
